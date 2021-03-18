@@ -41,6 +41,6 @@ public class StudentEnrolment {
     @Override
     public String toString() {
         return "Student Name: " + student.getName() + ". " + "Course: "
-                + course.getName() + ". " + "Semester: " + semester;
+                + course.getName() + ". " + "Semester: " + getSemester();
     }
 }
