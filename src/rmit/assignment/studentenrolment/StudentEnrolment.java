@@ -40,10 +40,7 @@ public class StudentEnrolment {
 
     @Override
     public String toString() {
-        return "StudentEnrolment{" +
-                "student=" + student +
-                ", course=" + course +
-                ", semester='" + semester + '\'' +
-                '}';
+        return "Student Name: " + student.getName() + ". " + "Course: "
+                + course.getName() + ". " + "Semester: " + semester;
     }
 }
