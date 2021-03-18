@@ -58,7 +58,13 @@ public class StudentEnrolmentList implements StudentEnrolmentManager {
     }
 
     public void deleteStudentEnrollment(String studentName, String courseName) {
+        for (int i = 0; i < studentEnrolmentLists.size(); i++) {
+            if(studentEnrolmentLists.get(i).getStudent().getName().equalsIgnoreCase(studentName)
+            && studentEnrolmentLists.get(i).getCourse().getName().equalsIgnoreCase(courseName)) {
+                System.out.println(studentEnrolmentLists.remove(i));
+            }
 
+        }
     }
 
 }

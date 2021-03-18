@@ -9,9 +9,9 @@ public class StudentList {
         studentArrayList.add(student);
     }
 
-    public Student getStudentName(String name) {
+    public Student getStudentId(String name) {
         for(Student student: studentArrayList) {
-            if(student.getName().equalsIgnoreCase(name)) {
+            if(student.getId().equalsIgnoreCase(name)) {
                 return student;
             }
         }

@@ -17,33 +17,34 @@ public class MainMenu {
     public void execute() {
         Scanner myInput = new Scanner(System.in);
         System.out.println("Main Menu");
-        System.out.println("1. View All Enrollments");
+        System.out.println("1. View Enrollments");
         System.out.println("2. Add Enrollments");
-        System.out.println("3. Change Enrollments");
-        System.out.println("4. Exit.");
-        System.out.print("Enter a number (1-4): ");
+        System.out.println("3. Edit Enrollments");
+        System.out.println("4. Delete Enrollments");
+        System.out.println("5. Exit.");
+        System.out.print("Enter a number (1-5): ");
 
         String mySelect = myInput.nextLine();
 
-        while(!mySelect.equals("4")) {
+        while(!mySelect.equals("5")) {
             switch (mySelect) {
                 case "1":
                     studentEnrolmentList.getAllStudentEnrollment();
-                    System.out.print("Enter a number (1-4): ");
+                    System.out.print("Enter a number (1-5): ");
                     mySelect = myInput.nextLine();
                     break;
                 case "2":
-                    System.out.println("Here are list of students. Pls enter name for enrolment: ");
+                    System.out.println("Here are list of students. Pls enter studentId for enrolment: ");
                     System.out.println(studentList.getStudentArrayList());
                     String myStudentSelect = myInput.nextLine();
                     StudentList studentList = new StudentList();
-                    Student student = studentList.getStudentName(myStudentSelect);
+                    Student student = studentList.getStudentId(myStudentSelect);
 
-                    System.out.println("Here are list of courses. Pls enter name for enrolment :");
+                    System.out.println("Here are list of courses. Pls enter courseId for enrolment :");
                     System.out.println(courseList.getCourseArrayList());
                     String myCourseSelect = myInput.nextLine();
                     CourseList courseList = new CourseList();
-                    Course course = courseList.getCourseName(myCourseSelect);
+                    Course course = courseList.getCourseId(myCourseSelect);
 
                     System.out.println("Please enter semester: ");
                     String mySem = myInput.nextLine();
@@ -51,14 +52,20 @@ public class MainMenu {
                     StudentEnrolment studentEnrolment = new StudentEnrolment(student, course, mySem);
                     studentEnrolmentList.addStudentEnrollment(studentEnrolment);
                     System.out.println("New enrolment added: " + studentEnrolment);
-                    System.out.print("Enter a number (1-4): ");
+                    System.out.print("Enter a number (1-5): ");
+                    mySelect = myInput.nextLine();
+                    break;
+                case "4":
+                    String myStudentInput = myInput.nextLine();
+                    String myCourseInput = myInput.nextLine();
+                    studentEnrolmentList.deleteStudentEnrollment(myStudentInput, myCourseInput);
+                    System.out.print("Enter a number (1-5): ");
                     mySelect = myInput.nextLine();
                     break;
                 default:
                     System.out.println("Wrong input. Pls try again");
-                    System.out.print("Enter a number (1-4): ");
+                    System.out.print("Enter a number (1-5): ");
                     mySelect = myInput.nextLine();
-
             }
         }
     }

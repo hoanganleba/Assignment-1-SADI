@@ -9,9 +9,9 @@ public class CourseList {
         courseArrayList.add(course);
     }
 
-    public Course getCourseName(String name) {
+    public Course getCourseId(String name) {
         for(Course course: courseArrayList) {
-            if(course.getName().equalsIgnoreCase(name)) {
+            if(course.getId().equalsIgnoreCase(name)) {
                 return course;
             }
         }

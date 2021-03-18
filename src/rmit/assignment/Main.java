@@ -16,7 +16,7 @@ public class Main {
         studentList.addStudent(student1);
         studentList.addStudent(student2);
 
-        Course course1 = new Course("MQTT12","Marketing", 12);
+        Course course1 = new Course("MKTT12","Marketing", 12);
         Course course2 = new Course("MKTG1420","Digital", 12);
         CourseList courseList = new CourseList();
         courseList.addCourse(course1);
