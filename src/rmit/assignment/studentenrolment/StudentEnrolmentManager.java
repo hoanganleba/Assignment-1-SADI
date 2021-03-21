@@ -1,7 +1,5 @@
 package rmit.assignment.studentenrolment;
 
-import rmit.assignment.studentenrolment.StudentEnrolment;
-
 public interface StudentEnrolmentManager {
     void addStudentEnrollment(StudentEnrolment studentEnrolment);
     void getAllStudentEnrollment();

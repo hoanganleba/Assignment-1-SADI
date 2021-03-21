@@ -18,6 +18,14 @@ public class StudentList {
         return null;
     }
 
+    public Object getAllStudents() {
+        ArrayList<String> students = new ArrayList<>();
+        for(Student student: studentArrayList) {
+            students.add("StudentId: " + student.getId() + " " + "StudentName: " + student.getName());
+        }
+        return students;
+    }
+
     public ArrayList<Student> getStudentArrayList() {
         return studentArrayList;
     }

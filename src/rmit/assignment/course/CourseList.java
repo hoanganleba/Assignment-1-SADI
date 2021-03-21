@@ -1,5 +1,7 @@
 package rmit.assignment.course;
 
+import rmit.assignment.student.Student;
+
 import java.util.ArrayList;
 
 public class CourseList {
@@ -16,6 +18,14 @@ public class CourseList {
             }
         }
         return null;
+    }
+
+    public Object getAllCourses() {
+        ArrayList<String> courses = new ArrayList<>();
+        for(Course course: courseArrayList) {
+            courses.add("CourseId: " + course.getId() + " " + "CourseName: " + course.getName());
+        }
+        return courses;
     }
 
     public ArrayList<Course> getCourseArrayList() {
