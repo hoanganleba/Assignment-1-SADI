@@ -16,12 +16,13 @@ public class MainMenu {
 
     public void menuGUI() {
         System.out.println("Main Menu");
-        System.out.println("1. View Enrollments");
-        System.out.println("2. Add Enrollments");
-        System.out.println("3. Edit Enrollments");
-        System.out.println("4. Delete Enrollments");
-        System.out.println("5. Exit.");
-        System.out.print("Enter a number (1-5): ");
+        System.out.println("1. View All Enrollments");
+        System.out.println("2. View All Enrollments By Student Id");
+        System.out.println("3. Add Enrollments");
+        System.out.println("4. Edit Enrollments");
+        System.out.println("5. Delete Enrollments");
+        System.out.println("0. Exit.");
+        System.out.print("Enter a number (0-5): ");
     }
 
     public void execute() {
@@ -29,7 +30,7 @@ public class MainMenu {
         menuGUI();
         String mySelect = myInput.nextLine();
 
-        while(!mySelect.equals("5")) {
+        while(!mySelect.equals("0")) {
             switch (mySelect) {
                 case "1":
                     studentEnrolmentList.getAllStudentEnrollment();
@@ -37,6 +38,13 @@ public class MainMenu {
                     mySelect = myInput.nextLine();
                     break;
                 case "2":
+                    System.out.println("Please enter student id: ");
+                    String myStudentIdSelect = myInput.nextLine();
+                    studentEnrolmentList.getStudentEnrollmentById(myStudentIdSelect);
+                    menuGUI();
+                    mySelect = myInput.nextLine();
+                    break;
+                case "3":
                     System.out.println("Here are list of students. Pls enter studentId for enrolment: ");
                     System.out.println(studentList.getAllStudents());
                     String myStudentSelect = myInput.nextLine();
@@ -59,9 +67,17 @@ public class MainMenu {
                     mySelect = myInput.nextLine();
                     break;
                 case "4":
-                    String myStudentInput = myInput.nextLine();
-                    String myCourseInput = myInput.nextLine();
-                    studentEnrolmentList.deleteStudentEnrollment(myStudentInput, myCourseInput);
+                    System.out.println("Please enter student id: ");
+                    String myStudentId = myInput.nextLine();
+                    studentEnrolmentList.editStudentEnrollment(myStudentId);
+                    System.out.println(studentEnrolmentList);
+
+                case "5":
+                    System.out.println("Please enter student id: ");
+                    String myStudentIdInput = myInput.nextLine();
+                    System.out.println("Please enter course id: ");
+                    String myCourseIdInput = myInput.nextLine();
+                    studentEnrolmentList.deleteStudentEnrollment(myStudentIdInput, myCourseIdInput);
                     menuGUI();
                     mySelect = myInput.nextLine();
                     break;

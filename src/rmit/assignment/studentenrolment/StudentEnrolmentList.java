@@ -20,14 +20,14 @@ public class StudentEnrolmentList implements StudentEnrolmentManager {
         }
     }
 
-    public void getStudentEnrollmentName(String studentName) {
+    public void getStudentEnrollmentById(String studentId) {
         if (studentEnrolmentLists.size() == 0) {
             System.out.println("There is no enrollment record.");
         }
         else {
             for (StudentEnrolment studentEnrolment: studentEnrolmentLists) {
-                String student = String.valueOf(studentEnrolment.getStudent().getName());
-                if(student.equalsIgnoreCase(studentName)) {
+                String student = String.valueOf(studentEnrolment.getStudent().getId());
+                if(student.equalsIgnoreCase(studentId)) {
                     System.out.println(studentEnrolment.toString());
                 }
             }
@@ -46,21 +46,26 @@ public class StudentEnrolmentList implements StudentEnrolmentManager {
                 }
             }
         }
-
     }
 
-    public void getStudentNameAndCourse(String studentName, String courseName) {
-
+    public void editStudentEnrollment(String studentId) {
+        if (studentEnrolmentLists.size() == 0) {
+            System.out.println("There is currently 0 enrollment record.");
+        }
+        else {
+            for (StudentEnrolment studentEnrolmentList: studentEnrolmentLists) {
+                String student = String.valueOf(studentEnrolmentList.getStudent().getId());
+                if(student.equals(studentId)) {
+                    System.out.println(studentEnrolmentList);
+                }
+            }
+        }
     }
 
-    public void editStudentEnrollment(String studentName) {
-
-    }
-
-    public void deleteStudentEnrollment(String studentName, String courseName) {
+    public void deleteStudentEnrollment(String studentId, String courseId) {
         for (int i = 0; i < studentEnrolmentLists.size(); i++) {
-            if(studentEnrolmentLists.get(i).getStudent().getName().equalsIgnoreCase(studentName)
-            && studentEnrolmentLists.get(i).getCourse().getName().equalsIgnoreCase(courseName)) {
+            if(studentEnrolmentLists.get(i).getStudent().getId().equalsIgnoreCase(studentId)
+            && studentEnrolmentLists.get(i).getCourse().getId().equalsIgnoreCase(courseId)) {
                 System.out.println(studentEnrolmentLists.remove(i));
             }
 

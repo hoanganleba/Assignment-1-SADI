@@ -5,6 +5,8 @@ import rmit.assignment.course.CourseList;
 import rmit.assignment.menu.MainMenu;
 import rmit.assignment.student.Student;
 import rmit.assignment.student.StudentList;
+import rmit.assignment.studentenrolment.StudentEnrolment;
+import rmit.assignment.studentenrolment.StudentEnrolmentList;
 
 public class Main {
     public static void main(String [] args) {
@@ -19,6 +21,16 @@ public class Main {
         CourseList courseList = new CourseList();
         courseList.addCourse(course1);
         courseList.addCourse(course2);
+
+        StudentEnrolment studentEnrolment1 = new StudentEnrolment(student1, course1, "2021A");
+        StudentEnrolment studentEnrolment2 = new StudentEnrolment(student1, course2, "2021A");
+        StudentEnrolment studentEnrolment3 = new StudentEnrolment(student2, course1, "2021A");
+        StudentEnrolment studentEnrolment4 = new StudentEnrolment(student2, course2, "2021A");
+        StudentEnrolmentList studentEnrolmentList = new StudentEnrolmentList();
+        studentEnrolmentList.addStudentEnrollment(studentEnrolment1);
+        studentEnrolmentList.addStudentEnrollment(studentEnrolment2);
+        studentEnrolmentList.addStudentEnrollment(studentEnrolment3);
+        studentEnrolmentList.addStudentEnrollment(studentEnrolment4);
 
         MainMenu mainMenu = new MainMenu();
         mainMenu.execute();

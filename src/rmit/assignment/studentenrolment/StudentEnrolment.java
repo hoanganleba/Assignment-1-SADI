@@ -40,7 +40,7 @@ public class StudentEnrolment {
 
     @Override
     public String toString() {
-        return "Student Name: " + student.getName() + ". " + "Course: "
+        return "Student Id: " + student.getId() + ". " + "Student Name: " + student.getName() + ". " + "Course: "
                 + course.getName() + ". " + "Semester: " + getSemester();
     }
 }
