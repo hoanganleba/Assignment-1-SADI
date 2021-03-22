@@ -1,6 +1,10 @@
 package rmit.assignment.studentenrolment;
 
+import rmit.assignment.course.Course;
+import rmit.assignment.course.CourseList;
+
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class StudentEnrolmentList implements StudentEnrolmentManager {
     private static final ArrayList<StudentEnrolment> studentEnrolmentLists = new ArrayList<>();
@@ -55,9 +59,9 @@ public class StudentEnrolmentList implements StudentEnrolmentManager {
         else {
             for (StudentEnrolment studentEnrolmentList: studentEnrolmentLists) {
                 String student = String.valueOf(studentEnrolmentList.getStudent().getId());
-                if(student.equals(studentId)) {
-                    System.out.println(studentEnrolmentList);
-                }
+                System.out.println("Enter Course Id to change");
+                Scanner scanner = new Scanner(System.in);
+                String mySelectCourseId = scanner.nextLine();
             }
         }
     }
