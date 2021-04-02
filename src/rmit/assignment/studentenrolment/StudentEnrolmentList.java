@@ -1,8 +1,5 @@
 package rmit.assignment.studentenrolment;
 
-import rmit.assignment.course.Course;
-import rmit.assignment.course.CourseList;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -38,20 +35,6 @@ public class StudentEnrolmentList implements StudentEnrolmentManager {
         }
     }
 
-    public void getStudentEnrollmentSemester(String semester) {
-        if (studentEnrolmentLists.size() == 0) {
-            System.out.println("There is no enrollment record.");
-        }
-        else {
-            for (StudentEnrolment studentEnrolment: studentEnrolmentLists) {
-                String student = String.valueOf(studentEnrolment.getSemester());
-                if(student.equals(semester)) {
-                    System.out.println(studentEnrolment.toString());
-                }
-            }
-        }
-    }
-
     public void editStudentEnrollment(String studentId) {
         if (studentEnrolmentLists.size() == 0) {
             System.out.println("There is currently 0 enrollment record.");
@@ -73,6 +56,32 @@ public class StudentEnrolmentList implements StudentEnrolmentManager {
                 System.out.println(studentEnrolmentLists.remove(i));
             }
 
+        }
+    }
+
+    public void printAllCoursesForStudentInSemester(String studentId, String semester) {
+        for (StudentEnrolment studentEnrolmentList : studentEnrolmentLists) {
+            if (studentEnrolmentList.getStudent().getId().equalsIgnoreCase(studentId)
+                    && studentEnrolmentList.getSemester().equalsIgnoreCase(semester)) {
+                System.out.println(studentEnrolmentList.getCourse().getName());
+            }
+        }
+    }
+
+    public void printAllStudentsInCourseInSemester(String courseId, String semester) {
+        for (StudentEnrolment studentEnrolmentList : studentEnrolmentLists) {
+            if (studentEnrolmentList.getCourse().getId().equalsIgnoreCase(courseId)
+                    && studentEnrolmentList.getSemester().equalsIgnoreCase(semester)) {
+                System.out.println(studentEnrolmentList.getStudent().getName());
+            }
+        }
+    }
+
+    public void printAllCoursesInSemester(String semester) {
+        for(StudentEnrolment studentEnrolmentList: studentEnrolmentLists) {
+            if (studentEnrolmentList.getSemester().equalsIgnoreCase(semester)) {
+                System.out.println(studentEnrolmentList.getCourse().getName());
+            }
         }
     }
 
