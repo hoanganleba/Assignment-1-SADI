@@ -21,8 +21,11 @@ public class MainMenu {
         System.out.println("3. Add Enrollments");
         System.out.println("4. Edit Enrollments");
         System.out.println("5. Delete Enrollments");
+        System.out.println("6. Print all courses for 1 student in 1 semester");
+        System.out.println("7. Print all students of 1 course in 1 semester");
+        System.out.println("8. Print all courses offered in 1 semester");
         System.out.println("0. Exit.");
-        System.out.print("Enter a number (0-5): ");
+        System.out.print("Enter a number (0-8): ");
     }
 
     public void execute() {
@@ -78,6 +81,31 @@ public class MainMenu {
                     System.out.println("Please enter course id: ");
                     String myCourseIdInput = myInput.nextLine();
                     studentEnrolmentList.deleteStudentEnrollment(myStudentIdInput, myCourseIdInput);
+                    menuGUI();
+                    mySelect = myInput.nextLine();
+                    break;
+                case "6":
+                    System.out.println("Please enter student id:");
+                    String myStudentIdInput1 = myInput.nextLine();
+                    System.out.println("Please enter semester: ");
+                    String mySemester = myInput.nextLine();
+                    studentEnrolmentList.printAllCoursesForStudentInSemester(myStudentIdInput1, mySemester);
+                    menuGUI();
+                    mySelect = myInput.nextLine();
+                    break;
+                case "7":
+                    System.out.println("Please enter course id:");
+                    String myCourseIdInput1 = myInput.nextLine();
+                    System.out.println("Please enter semester: ");
+                    String mySemester1 = myInput.nextLine();
+                    studentEnrolmentList.printAllStudentsInCourseInSemester(myCourseIdInput1, mySemester1);
+                    menuGUI();
+                    mySelect = myInput.nextLine();
+                    break;
+                case "8":
+                    System.out.println("Please enter semester: ");
+                    String mySemester2 = myInput.nextLine();
+                    studentEnrolmentList.printAllCoursesInSemester(mySemester2);
                     menuGUI();
                     mySelect = myInput.nextLine();
                     break;
