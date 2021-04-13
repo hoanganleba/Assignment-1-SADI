@@ -1,7 +1,5 @@
 package rmit.assignment.course;
 
-import rmit.assignment.student.Student;
-
 import java.util.ArrayList;
 
 public class CourseList {

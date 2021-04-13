@@ -8,29 +8,36 @@ import rmit.assignment.student.StudentList;
 import rmit.assignment.studentenrolment.StudentEnrolment;
 import rmit.assignment.studentenrolment.StudentEnrolmentList;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String [] args) {
-        Student student1 = new Student("s3681410", "An", "28/12/1998");
-        Student student2 = new Student("s3781410", "Hong", "12/12/1998");
-        StudentList studentList = new StudentList();
-        studentList.addStudent(student1);
-        studentList.addStudent(student2);
+        try {
+            File myObj = new File("default.csv");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                String[] arrSplit = data.split(",");
 
-        Course course1 = new Course("MKTT12","Marketing", 12);
-        Course course2 = new Course("MKTG1420","Digital", 12);
-        CourseList courseList = new CourseList();
-        courseList.addCourse(course1);
-        courseList.addCourse(course2);
+                Student student = new Student(arrSplit[0], arrSplit[1], arrSplit[2]);
+                StudentList studentList = new StudentList();
+                studentList.addStudent(student);
 
-        StudentEnrolment studentEnrolment1 = new StudentEnrolment(student1, course1, "2021A");
-        StudentEnrolment studentEnrolment2 = new StudentEnrolment(student1, course2, "2021A");
-        StudentEnrolment studentEnrolment3 = new StudentEnrolment(student2, course1, "2021A");
-        StudentEnrolment studentEnrolment4 = new StudentEnrolment(student2, course2, "2021A");
-        StudentEnrolmentList studentEnrolmentList = new StudentEnrolmentList();
-        studentEnrolmentList.addStudentEnrollment(studentEnrolment1);
-        studentEnrolmentList.addStudentEnrollment(studentEnrolment2);
-        studentEnrolmentList.addStudentEnrollment(studentEnrolment3);
-        studentEnrolmentList.addStudentEnrollment(studentEnrolment4);
+                Course course = new Course(arrSplit[3], arrSplit[4], Integer.parseInt(arrSplit[5]));
+                CourseList courseList = new CourseList();
+                courseList.addCourse(course);
+
+                StudentEnrolment studentEnrolment = new StudentEnrolment(student, course, arrSplit[6]);
+                StudentEnrolmentList studentEnrolmentList = new StudentEnrolmentList();
+                studentEnrolmentList.addStudentEnrollment(studentEnrolment);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
 
         MainMenu mainMenu = new MainMenu();
         mainMenu.execute();
