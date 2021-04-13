@@ -1,5 +1,7 @@
 package rmit.assignment.studentenrolment;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -55,33 +57,62 @@ public class StudentEnrolmentList implements StudentEnrolmentManager {
             && studentEnrolmentLists.get(i).getCourse().getId().equalsIgnoreCase(courseId)) {
                 System.out.println(studentEnrolmentLists.remove(i));
             }
-
         }
     }
 
     public void printAllCoursesForStudentInSemester(String studentId, String semester) {
+        ArrayList<String> courseList = new ArrayList<String>();
         for (StudentEnrolment studentEnrolmentList : studentEnrolmentLists) {
             if (studentEnrolmentList.getStudent().getId().equalsIgnoreCase(studentId)
                     && studentEnrolmentList.getSemester().equalsIgnoreCase(semester)) {
-                System.out.println(studentEnrolmentList.getCourse().getName());
+                courseList.add(studentEnrolmentList.getCourse().getName());
             }
+        }
+        try {
+            FileWriter myWriter = new FileWriter("allCoursesOfStudentInSemester.csv");
+            myWriter.write(String.valueOf(courseList));
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
         }
     }
 
     public void printAllStudentsInCourseInSemester(String courseId, String semester) {
+        ArrayList<String> studentList = new ArrayList<String>();
         for (StudentEnrolment studentEnrolmentList : studentEnrolmentLists) {
             if (studentEnrolmentList.getCourse().getId().equalsIgnoreCase(courseId)
                     && studentEnrolmentList.getSemester().equalsIgnoreCase(semester)) {
-                System.out.println(studentEnrolmentList.getStudent().getName());
+                studentList.add(studentEnrolmentList.getStudent().getName());
             }
+        }
+        try {
+            FileWriter myWriter = new FileWriter("allStudentsOfCourseInSemester.csv");
+            myWriter.write(String.valueOf(studentList));
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
         }
     }
 
     public void printAllCoursesInSemester(String semester) {
+        ArrayList<String> courseList = new ArrayList<String>();
         for(StudentEnrolment studentEnrolmentList: studentEnrolmentLists) {
             if (studentEnrolmentList.getSemester().equalsIgnoreCase(semester)) {
-                System.out.println(studentEnrolmentList.getCourse().getName());
+                courseList.add(studentEnrolmentList.getCourse().getName());
             }
+        }
+        try {
+            FileWriter myWriter = new FileWriter("allCoursesInSemester.csv");
+            myWriter.write(String.valueOf(courseList));
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
         }
     }
 
